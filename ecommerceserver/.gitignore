@@ -1,0 +1,32 @@
+# dependencies
+node_modules/
+
+# env files
+.env
+.env.local
+.env.production
+
+# node modules
+node_modules/
+HyperstoreFRONTEND/node_modules/
+ecommerceserver/node_modules/
+
+# env files
+.env
+HyperstoreFRONTEND/.env
+ecommerceserver/.env
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# build output
+dist/
+build/
+
+# editor
+.vscode/
+
+# OS files
+.DS_Store
