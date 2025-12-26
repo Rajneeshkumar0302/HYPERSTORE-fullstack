@@ -3,7 +3,7 @@ import Carticon from './cart.png';
 import Homeicon from './Homeicon.png';
 import Usericon from './user.png';
 import SearchBtn from './SearchBtn.png';
-import User from './User.png'
+import User from './user.png'
 import categories1 from './categories.png'
 import cart from './cart.png'
 import Setting from './Setting.png'
