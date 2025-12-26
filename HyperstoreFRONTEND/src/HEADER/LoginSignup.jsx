@@ -4,330 +4,215 @@ import "../index.css";
 import API from "../API.js";
 import { Eye, EyeOff } from "lucide-react";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom"; // ✅ ADDED
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-
 
 const LoginSignup = () => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const { login } = useAuth();
-
-  const navigate = useNavigate(); // ✅ ADDED
+  const navigate = useNavigate();
 
   const handleFlip = () => setIsFlipped(!isFlipped);
 
-  // ✅ LOGIN HANDLER (SAFE)
+  /* ---------------- LOGIN ---------------- */
   const handleLogin = async (e) => {
     e.preventDefault();
+    const email = e.target.email.value.trim();
+    const password = e.target.password.value.trim();
 
-    // 🔹 Form values (temporary)
-    const formEmail = e.target.email.value.trim();
-    const formPassword = e.target.password.value.trim();
-
-    if (!formEmail || !formPassword) {
-      Swal.fire({
-        title: "Missing Fields ⚠️",
-        text: "Please enter both email and password.",
-        icon: "warning",
-        background: "rgba(255, 255, 255, 0.1)",
-        color: "#fff",
-        confirmButtonColor: "#ffcc00",
-      });
-      return;}
+    if (!email || !password) {
+      Swal.fire("Missing Fields", "Enter email & password", "warning");
+      return;
+    }
 
     setLoading(true);
-   try {
-  const res = await API.post("/auth/login", {
-    email: formEmail,
-    password: formPassword,
-  });
+    try {
+      const res = await API.post("/auth/login", { email, password });
+      login(res.data);
 
-  if (import.meta.env.DEV) {
-    console.log("LOGIN RESPONSE:", res.data);
-  }
-  // 🔑 SINGLE SOURCE OF TRUTH
-  login(res.data);
+      Swal.fire({
+        title: "Login Successful",
+        icon: "success",
+        timer: 1500,
+        showConfirmButton: false,
+      });
 
-  Swal.fire({
-    title: `Welcome Back, ${res.data.name || "User"}`,
-    text: res.data.message || "Login successful!",
-    icon: "success",
-    background: "rgba(255,255,255,0.1)",
-    color: "#fff",
-    showConfirmButton: false,
-    timer: 2000,
-  });
-
-  setTimeout(() => {
-    navigate("/");
-  }, 2000);
-
-} catch (err) {
-  if (import.meta.env.DEV) {
-    console.error("LOGIN ERROR:", err);
-  }
-
-  Swal.fire({
-    title: "Login Failed ❌",
-    text: err.response?.data?.message || "Something went wrong",
-    icon: "error",
-    confirmButtonColor: "#ff4b4b",
-  });
-}
- finally {
+      setTimeout(() => navigate("/"), 1500);
+    } catch (err) {
+      Swal.fire(
+        "Login Failed",
+        err.response?.data?.message || "Something went wrong",
+        "error"
+      );
+    } finally {
       setLoading(false);
     }
   };
-  
 
-
-
-
-
-
-
-
-
-
-
-
-  //  SIGNUP HANDLER (UNCHANGED LOGIC)
-  
+  /* ---------------- SIGNUP ---------------- */
   const handleSignup = async (e) => {
     e.preventDefault();
-
     const name = e.target.name.value.trim();
     const email = e.target.email.value.trim();
     const password = e.target.password.value.trim();
 
     setLoading(true);
-
     try {
-      const res = await API.post("/auth/register", {
-        name,
-        email,
-        password,
-      });
-
-      Swal.fire({
-        title: `Welcome, ${name}! 🎉`,
-        text: res.data.message || "Your account has been created successfully.",
-        icon: "success",
-        background: "rgba(255, 255, 255, 0.1)",
-        color: "#fff",
-        showConfirmButton: false,
-        timer: 2500,
-        customClass: { popup: "glass-popup" },
-      });
-
-      //  Flip back to login
-      setTimeout(() => {
-        setIsFlipped(false);
-      }, 2000);
+      await API.post("/auth/register", { name, email, password });
+      Swal.fire("Account Created", "You can now login", "success");
+      setIsFlipped(false);
     } catch (err) {
-      Swal.fire({
-        title: "Signup Failed ⚠️",
-        text:
-          err.response?.data?.message ||
-          "Something went wrong. Please try again!",
-        icon: "error",
-        confirmButtonColor: "#ff5555",
-      });
-    } finally {setLoading(false);
-   
+      Swal.fire(
+        "Signup Failed",
+        err.response?.data?.message || "Try again",
+        "error"
+      );
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="flex items-center justify-center h-screen  bg-gray-100"
-     style={{
-    backgroundImage: `url(${bgpattern})`,
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-   }}>
-      {/* OUTER CARD CONTAINER */}
-      <div className="flex w-[clamp(650px,80%,900px)] h-[clamp(500px,70%,800px)] rounded-2xl overflow-hidden shadow-2xl bg-white">
+    <div
+      className="min-h-screen flex items-center justify-center bg-gray-100 px-4"
+      style={{
+        backgroundImage: `url(${bgpattern})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      {/* CARD */}
+      <div className="flex w-full max-w-4xl min-h-[520px] rounded-2xl overflow-hidden shadow-2xl bg-white">
 
-
-
-
-        {/* LEFT ORANGE FIXED SIDE */}
-        <div className="w-1/2 bg-[rgb(231,111,33)] flex flex-col items-center justify-center
-         text-white">
-          <img  src="https://res.cloudinary.com/dcx4sk4cm/image/upload/v1763465700/hyperstorecanvas_tuvy7l.png"  alt="Grocery Logo" style={{border: "5px solid rgb(210, 110, 35)"}}
-            className="w-[clamp(50px,17vw,160px)] h-[clamp(50px,17vw,160px)] mb-6 rounded-full "/>
-          <h1 className="text-[clamp(1.8rem,2.5vw,2.5rem)] font-bold">
-            HYPERSTORE 
-          </h1>
-          <p className="text-[clamp(0.9rem,1.3vw,1.1rem)] opacity-90">
-            Freshness Delivered Daily
-          </p>
+        {/* LEFT PANEL (Desktop only) */}
+        <div className="hidden md:flex w-1/2 bg-orange-500 text-white flex-col items-center justify-center">
+          <img
+            src="https://res.cloudinary.com/dcx4sk4cm/image/upload/v1763465700/hyperstorecanvas_tuvy7l.png"
+            alt="Logo"
+            className="w-36 h-36 rounded-full border-4 border-orange-300 mb-6"
+          />
+          <h1 className="text-3xl font-bold">HYPERSTORE</h1>
+          <p className="opacity-90">Freshness Delivered Daily</p>
         </div>
-        {/* RIGHT WHITE SIDE (FLIP CARD) */}
-        <div className="w-1/2 relative perspective">
-  {/* rotating wrapper: this is the element that will rotate */}
-  <div
-    className={`absolute inset-0 transition-transform duration-700 preserve-3d ${
-      isFlipped ? "rotate-y-180" : ""  }`}
 
-    style={{transformStyle: "preserve-3d" }} // extra safety for some browsers
->
-  
-    {/* FRONT - LOGIN */}
-    <div className="absolute inset-0 bg-white backface-hidden 
-    flex flex-col items-center  p-8">
-      {/* Login content */}
-      
-    <h2 className="text-4xl flex  font-bold mb-6 text-[rgb(231,111,33)]" style={{margin:"10%"}}>Sign In</h2>
-    <div className="w-full h-[65%] flex flex-col items-center justify-center">
-       
-        <form onSubmit={handleLogin}
-         className="w-full  flex flex-col items-center justify-center gap-11">
-         
-        <input type="email" name="email" placeholder="Email" required 
-        className="border-b-2 border-gray-400 w-4/5 mb-6 focus:outline-none py-2" />
-       <div className="relative w-4/5 mb-5">
-  <input
-    type={showPassword ? "text" : "password"}
-    name="password"
-    placeholder="Password"
-    required
-    className="border-b-2 border-gray-400 w-full focus:outline-none py-2 pr-10"
-  />
-  <div
-    onClick={() => setShowPassword(!showPassword)}
-    className="absolute right-2 top-1/2 transform -translate-y-1/2 cursor-pointer
-     text-gray-500 hover:text-gray-700">
-    {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-  </div>
-</div>
-        <button type="submit" disabled={loading}
-         className="bg-[rgb(231,111,33)] text-white  rounded-full
-          hover:bg-[rgb(200,90,25)] transition-all" style={{padding:"2% 7%"}} >
-          {loading ? "Loading..." : "Login"}
-        </button>
-      </form>
-      {/* to make a  proper gap  inte  facebook  and the googlle button */}
-        <div className="w-full  flex flex-col items-center justify-center gap-5 ">
-         <button className="text-blue-600 underline mt-4"
-       onClick={handleFlip}>Create an account?</button>
+        {/* RIGHT PANEL */}
+        <div className="relative w-full md:w-1/2 perspective">
+          <div
+            className={`absolute inset-0 transition-transform duration-700 ${
+              isFlipped ? "rotate-y-180" : ""
+            }`}
+            style={{ transformStyle: "preserve-3d" }}
+          >
+            {/* -------- LOGIN -------- */}
+            <div className="absolute inset-0 backface-hidden flex flex-col items-center justify-center px-6">
+              <h2 className="text-3xl font-bold text-orange-500 mb-6">Sign In</h2>
 
-      <div className="flex items-center my-4 w-4/5">
-        <div  style={{ flexGrow: 1, height: "1px", backgroundColor: "#D1D5DB" // Tailwind's gray-300 color
-         }} />
-        <span className="px-2 text-gray-500 text-sm">or sign in with</span>
-        <div  style={{ flexGrow: 1, height: "1px", backgroundColor: "#D1D5DB"  }} />
-      </div>
+              <form
+                onSubmit={handleLogin}
+                className="w-full flex flex-col gap-6"
+              >
+                <input
+                  name="email"
+                  type="email"
+                  placeholder="Email"
+                  className="border-b-2 py-2 outline-none"
+                />
 
+                <div className="relative">
+                  <input
+                    name="password"
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Password"
+                    className="border-b-2 py-2 w-full outline-none"
+                  />
+                  <span
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-2 top-2 cursor-pointer text-gray-500"
+                  >
+                    {showPassword ? <EyeOff /> : <Eye />}
+                  </span>
+                </div>
 
-      <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 w-full ">
-  
-  {/* Google Button */}
-  <button
-      style={{
-    padding: window.innerWidth < 640 ? "12px 24px" : "12px 40px",
-    fontSize: window.innerWidth < 640 ? "12px" : "16px",
-    borderRadius: "9999px",
-    display: "flex",
-    alignItems: "center",
-    gap: "8px",
-    backgroundColor: "white",
-    border: "1px solid #ddd",
-    cursor: "pointer"
-  }}
-  >
-    <img
-      src={google}
-      alt="Google"
-     style={{
-      width: window.innerWidth < 640 ? "20px" : "24px",
-      height: window.innerWidth < 640 ? "26px" : "34px"
-    }}
-    />
-    Google
-  </button>
+                <button
+                  disabled={loading}
+                  className="bg-orange-500 text-white py-2 rounded-full hover:bg-orange-600"
+                >
+                  {loading ? "Loading..." : "Login"}
+                </button>
+              </form>
 
-  {/* Facebook Button */}
-  <button
-      style={{
-    padding: window.innerWidth < 640 ? "10px 24px" : "10px 40px",
-    fontSize: window.innerWidth < 640 ? "12px" : "16px",
-    borderRadius: "9999px",
-    display: "flex",
-    alignItems: "center",
-    gap: "8px",
-    backgroundColor: "white",
-    border: "1px solid #ddd",
-    cursor: "pointer"
-  }}
-  >
-    <img
-      src={facebook}
-      alt="Facebook"
-      style={{
-      width: window.innerWidth < 640 ? "20px" : "26px",
-      height: window.innerWidth < 640 ? "26px" : "29px"
-    }}
-    />
-    Facebook
-  </button>
+              <button
+                onClick={handleFlip}
+                className="text-blue-600 underline mt-4"
+              >
+                Create an account?
+              </button>
 
-</div>
+              <div className="flex items-center my-4 w-full">
+                <div className="flex-grow h-px bg-gray-300" />
+                <span className="px-2 text-sm text-gray-500">
+                  or sign in with
+                </span>
+                <div className="flex-grow h-px bg-gray-300" />
+              </div>
 
+              <div className="flex flex-col sm:flex-row gap-3 w-full">
+                <button className="flex items-center justify-center gap-2 px-6 py-3 border rounded-full">
+                  <img src={google} alt="Google" className="w-5" />
+                  Google
+                </button>
+                <button className="flex items-center justify-center gap-2 px-6 py-3 border rounded-full">
+                  <img src={facebook} alt="Facebook" className="w-5" />
+                  Facebook
+                </button>
+              </div>
+            </div>
 
+            {/* -------- SIGNUP -------- */}
+            <div className="absolute inset-0 rotate-y-180 backface-hidden flex flex-col items-center justify-center px-6">
+              <h2 className="text-3xl font-bold text-orange-500 mb-6">Sign Up</h2>
 
+              <form
+                onSubmit={handleSignup}
+                className="w-full flex flex-col gap-6"
+              >
+                <input
+                  name="name"
+                  placeholder="Name"
+                  className="border-b-2 py-2 outline-none"
+                />
+                <input
+                  name="email"
+                  type="email"
+                  placeholder="Email"
+                  className="border-b-2 py-2 outline-none"
+                />
+                <input
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                  className="border-b-2 py-2 outline-none"
+                />
 
-     </div>      
-   </div>      
- </div>
+                <button
+                  disabled={loading}
+                  className="bg-green-500 text-white py-2 rounded-full hover:bg-green-600"
+                >
+                  {loading ? "Loading..." : "Register"}
+                </button>
+              </form>
 
-    {/* BACK - SIGNUP */}
-    <div className="absolute inset-0 bg-white rotate-y-180 backface-hidden flex flex-col items-center p-8">
-      {/* Signup content */}
-
-      <h2 className="text-4xl flex  font-bold mb-6 text-[rgb(231,111,33)]" style={{margin:"10%"}}>Sign Up</h2>
-      <div className="w-full h-[65%] flex flex-col items-center justify-center">
-
-        <form onSubmit={handleSignup} className="w-full  flex flex-col items-center justify-center gap-11">
-        <input type="text" name="name" id="name" placeholder="name" required
-         className="border-b-2 border-gray-400 w-4/5 mb-5 focus:outline-none py-2"/>        
-        <input type="email" name="email" id="email" placeholder="Email" required 
-        className="border-b-2 border-gray-400 w-4/5 mb-5 focus:outline-none py-2"/>
-       <div className="relative w-4/5 mb-5">
-     <input
-       type={showPassword ? "text" : "password"}
-       name="password"
-       id="password"
-       placeholder="Password"
-       required
-       className="border-b-2 border-gray-400 w-full focus:outline-none py-2 pr-10" />
-     <div
-      onClick={() => setShowPassword(!showPassword)}
-      className="absolute right-2 top-1/2 transform -translate-y-1/2 cursor-pointer
-     text-gray-500 hover:text-gray-700"  >
-    {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-  </div>
-</div>
-
-
-        <button type="submit" disabled={loading} 
-        className="bg-green-500 text-white rounded-full
-         hover:bg-green-600 transition-all" style={{padding:"2% 7%"}}>
-          {loading ? "Loading..." : "Register"}
-        </button>
-      </form>
-
-      <button className="text-red-600 underline mt-4"
-       onClick={handleFlip}>Already have an account?</button>
-
-    </div>
-         
-    </div>
-  </div>
-</div>
+              <button
+                onClick={handleFlip}
+                className="text-red-600 underline mt-4"
+              >
+                Already have an account?
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
