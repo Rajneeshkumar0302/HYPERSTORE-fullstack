@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
@@ -151,26 +150,24 @@ cursor-pointer hover:scale-130 transition-transform duration-200"/>
           setOpen(false);
           navigate("/");
         }}
-        className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
-      >
+        className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100" >
         Logout
       </button>
     </div>
-  )}
-</li>
-
-
-    </ul>
+    )}
+  </li>
+ </ul>
 
 
   </div>
 </nav>
 
     </div>
-  )
-}
+  )}
 
 export default Navbar; 
 
 
 
+
+;
