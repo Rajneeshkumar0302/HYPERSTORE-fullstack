@@ -80,16 +80,6 @@ const LoginSignup = () => {
       setLoading(false);
     }
   };
-  
-
-
-
-
-
-
-
-
-
 
 
 
@@ -141,7 +131,7 @@ const LoginSignup = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen  bg-gray-100"
+    <div className="flex items-center justify-center h-screen min-h-screen w-full  bg-gray-100"
      style={{
     backgroundImage: `url(${bgpattern})`,
     backgroundRepeat: "no-repeat",
