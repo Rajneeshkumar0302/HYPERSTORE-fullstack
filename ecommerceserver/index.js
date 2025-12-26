@@ -8,11 +8,9 @@ import Product from "./models/Productmodel.js";
 import authRoutes from "./Routes/authRoutes.js";
 import adminRoutes from "./Routes/adminRoutes.js";
 import productRoutes from "./Routes/ProductRoutes.js";
- 
 // ===== CONFIG =====
 const app = express();
 const PORT =process.env.PORT || 3000;
-
 // ===== MIDDLEWARE =====
 app.use(
   cors({
@@ -23,8 +21,7 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// ===== MongoDB Connection =====
-
+// ===== MongoDB Connection ====
 mongoose.connect(process.env.MONGO_URI,
  {useNewUrlParser: true,
   useUnifiedTopology: true
