@@ -212,11 +212,11 @@ const Section1 = () => {
   id="features"
   style={{
      position: "relative",
-    margin: '6%',
+    margin: '8%',
     backgroundColor: 'rgb(244, 240, 225)',
     padding: '0rem',
     borderRadius: '1rem', 
-    height:"clamp(240px,79vh,677px)",
+    height:"clamp(340px,89vh,677px)",
     overflow: "hidden", }}>
 
 
