@@ -215,7 +215,7 @@ const Section1 = () => {
     padding: '0rem',
     borderRadius: '1rem', 
     height:"clamp(390px,99vh,677px)",
-    overflow: "hidden", }}>
+    overflow: "visible", }}>
 
 
      <img src={bgpattern}  style={{
