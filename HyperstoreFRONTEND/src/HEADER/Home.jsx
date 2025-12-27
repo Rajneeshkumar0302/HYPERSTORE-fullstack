@@ -68,7 +68,7 @@ const Home = () => {
         }}>
         <h1
           style={{
-            fontSize: "clamp(2rem, 4vw, 3.5rem)",
+            fontSize: "clamp(1.7rem, 4vw, 3.5rem)",
             fontWeight: "bold",
             color: "#222",
             textAlign: "center", }} >
