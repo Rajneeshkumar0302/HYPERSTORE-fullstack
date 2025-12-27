@@ -12,7 +12,7 @@ const Home = () => {
       style={{
         position: "relative",
         width: "100%",
-        height: "190px",
+        height: "clamp(140px, 20vw, 190px)",
         background: "linear-gradient(to bottom, rgb(244, 120, 25), rgb(255,255,255))",
         display: "flex",
         alignItems: "center",
@@ -23,7 +23,7 @@ const Home = () => {
       <h1 style={{  position: "absolute",
           fontSize: "clamp(4rem, 10vw, 12rem)",
           fontWeight: "900",
-          letterSpacing: "8px",
+          letterSpacing: "clamp(5px, 0.6vw, 9px)",
           textTransform: "uppercase",
           bottom: "-2%",
           left: "50%",
