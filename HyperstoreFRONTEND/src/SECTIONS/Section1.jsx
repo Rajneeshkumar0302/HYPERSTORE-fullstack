@@ -205,18 +205,16 @@ const Section1 = () => {
           </div>
         </section>
 
-
-
         {/* Features Section */}
         <section
-  id="features"
-  style={{
-     position: "relative",
+    id="features"
+    style={{
+    position: "relative",
     margin: '8%',
     backgroundColor: 'rgb(244, 240, 225)',
     padding: '0rem',
     borderRadius: '1rem', 
-    height:"clamp(340px,89vh,677px)",
+    height:"clamp(390px,99vh,677px)",
     overflow: "hidden", }}>
 
 
@@ -256,7 +254,6 @@ const Section1 = () => {
       <p className="text-gray-600 text-l mt-2">
         Get your orders delivered within 24 to 48 hours across major cities.
       </p>
-
       <img src={fastdelivery}  alt="delivery" 
       style={{ borderRadius: '1rem',
        height:"clamp(150px,50vh,530px)" ,
