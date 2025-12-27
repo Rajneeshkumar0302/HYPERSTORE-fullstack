@@ -14,8 +14,7 @@ const SecondNavbar = () => {
     <div className="w-full">
          
         <nav style={{ backgroundColor: "rgb(244, 120, 25)", height: "clamp(40px, 9vh, 150px)" ,width:"100%"}}
-         className="w-full flex flex-wrap items-center justify-center px-2 sm:px-6 md:px-10 lg:px-16"
-     >
+         className="w-full flex  items-center justify-center px-2 sm:px-6 md:px-10 lg:px-16" >
 
      <div className="
             flex items-center justify-evenly flex-wrap 
@@ -29,7 +28,7 @@ const SecondNavbar = () => {
               <img  src={Homeicon}  alt="HOME"
                 className="hover:scale-110 transition-transform duration-200"
                 style={{
-                  width: "clamp(10px, 3vw, 60px)",
+                  width: "clamp(20px, 4vw, 50px)",
                   height: "clamp(10px, 4vh, 60px)",}}/>
               <p className="text-white text-xs sm:text-sm mt-1 "
                style={{ color: "white" }}>HOME</p>
@@ -44,7 +43,7 @@ const SecondNavbar = () => {
               <img  src={contact}  alt="Contact"
                 className="hover:scale-110 transition-transform duration-200"
                style={{
-                  width: "clamp(10px, 3vw, 60px)",
+                  width: "clamp(15px, 4vw, 50px)",
                   height: "clamp(10px, 4vh, 60px)",}}/>
               <p className="text-white text-xs sm:text-sm mt-1" style={{ color: "white" }}>CONTACT</p>
             </Link>
@@ -60,7 +59,7 @@ const SecondNavbar = () => {
                 alt="Categories"
                 className="hover:scale-110 transition-transform duration-200"
                 style={{
-                 width: "clamp(10px, 3vw, 60px)",
+                 width: "clamp(15px, 4vw, 50px)",
                   height: "clamp(10px, 4vh, 60px)",}} />
               <p className="text-white text-xs sm:text-sm mt-1" 
                style={{ color: "white" , text:"clamp(3px, 1rem, 150px)" }}>CATEGORIES</p>
