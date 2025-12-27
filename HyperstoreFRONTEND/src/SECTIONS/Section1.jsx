@@ -238,7 +238,7 @@ const Section1 = () => {
 
  
   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-18
-   text-center  h-[clamp(150px,30vh,310px)] " 
+   text-center  h-[clamp(250px,40vh,310px)] " 
                      style={{
                       padding:"0% 0% 10% 0%",                                         
                       opacity: 1, // 🔹 keep it subtle
