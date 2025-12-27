@@ -34,9 +34,9 @@ style={{ backgroundColor:"rgb(244, 120, 25)",padding:"0.5%" }}>
 <Link to="/" className="flex items-center space-x-2">
 <img src="https://res.cloudinary.com/dcx4sk4cm/image/upload/v1763465700/hyperstorecanvas_tuvy7l.png" alt="Logo"
 
- className=" w-[clamp(50px,17vw,160px)] h-[clamp(50px,17vw,160px)]  ease-in-out hover:scale-105 transition-transform duration-200 rounded-full  "/>
+ className=" w-[clamp(50px,17vw,140px)] h-[clamp(50px,17vw,140px)]  ease-in-out hover:scale-105 transition-transform duration-200 rounded-full  "/>
 <span style={{color: "rgb(255, 255, 255)",}}
- className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold ">
+ className="hidden md:inline-block text-base sm:text-lg md:text-xl lg:text-2xl font-bold ">
   <span className='text-xl sm:text2xl md:text-4xl lg:text-5xl'>H</span >YPER<span className='text-xl sm:text2xl md:text-4xl lg:text-5xl'>S</span>TORE</span>
 </Link>
 
