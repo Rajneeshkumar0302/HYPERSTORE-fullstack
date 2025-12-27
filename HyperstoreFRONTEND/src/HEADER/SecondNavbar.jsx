@@ -28,8 +28,8 @@ const SecondNavbar = () => {
               <img  src={Homeicon}  alt="HOME"
                 className="hover:scale-110 transition-transform duration-200"
                 style={{
-                  width: "clamp(20px, 5vw, 50px)",
-                  height: "clamp(10px, 4vh, 60px)",}}/>
+                  width: "clamp(21px, 5vw, 50px)",
+                  height: "clamp(8px, 4vh, 60px)",}}/>
               <p className="text-white text-xs sm:text-sm mt-1 "
                style={{ color: "white" }}>HOME</p>
             </Link>
@@ -43,7 +43,7 @@ const SecondNavbar = () => {
               <img  src={contact}  alt="Contact"
                 className="hover:scale-110 transition-transform duration-200"
                style={{
-                  width: "clamp(20px, 5vw, 50px)",
+                  width: "clamp(23px, 5vw, 50px)",
                   height: "clamp(10px, 4vh, 60px)",}}/>
               <p className="text-white text-xs sm:text-sm mt-1" style={{ color: "white" }}>CONTACT</p>
             </Link>
@@ -59,7 +59,7 @@ const SecondNavbar = () => {
                 alt="Categories"
                 className="hover:scale-110 transition-transform duration-200"
                 style={{
-                 width: "clamp(20px, 5vw, 50px)",
+                 width: "clamp(22px, 5vw, 50px)",
                   height: "clamp(10px, 4vh, 60px)",}} />
               <p className="text-white text-xs sm:text-sm mt-1" 
                style={{ color: "white" , text:"clamp(3px, 1rem, 150px)" }}>CATEGORIES</p>
