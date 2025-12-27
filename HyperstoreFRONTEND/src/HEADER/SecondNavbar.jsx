@@ -19,8 +19,8 @@ const SecondNavbar = () => {
      <div className="
             flex items-center justify-evenly flex-wrap 
             ml-auto 
-            gap-[clamp(1rem,4vw,4rem)]
-            w-[50%] sm:w-[55%] md:w-[50%] lg:w-[45%]">
+            gap-[clamp(0.5rem,4vw,4rem)]
+            w-[55%] sm:w-[55%] md:w-[50%] lg:w-[55%]">
 
            {/* HOME */}
           <div >
