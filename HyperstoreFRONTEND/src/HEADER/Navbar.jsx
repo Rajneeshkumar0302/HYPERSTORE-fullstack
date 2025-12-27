@@ -45,7 +45,7 @@ style={{ backgroundColor:"rgb(244, 120, 25)",padding:"0.5%" }}>
                                         {/* //SEARCH -BAR // */}
 
 <div className="relative transition-all duration-400 ease-in-out
-                w-[clamp(2rem,24vw,20rem)] hover:w-[clamp(10rem,40vw,25rem)]">
+                w-[clamp(6rem,20vw,20rem)] hover:w-[clamp(10rem,40vw,25rem)]">
 <input type="text" placeholder="Search" style={{ backgroundColor:"white" ,padding:"1rem", }}
 className="rounded-full  text-black  w-full h-9 focus:outline-none" />
 <img src={SearchBtn} alt="Search"
