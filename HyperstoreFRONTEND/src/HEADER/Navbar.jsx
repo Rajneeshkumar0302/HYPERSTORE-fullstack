@@ -55,8 +55,8 @@ cursor-pointer hover:scale-130 transition-transform duration-200"/>
 
 
 
-<ul className="flex items-center  justify-end  text-sm font-medium">
- <li style={{ margin: "0rem 1rem 0rem 0rem" }}>
+<ul className="flex items-center  justify-end  text-sm font-medium gap-[clamp(0.5rem,2vw,1.2rem)]">
+ <li>
   <Link to="/Cart" className="relative inline-block">
     
     {/* CART ICON */}
