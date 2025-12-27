@@ -45,9 +45,9 @@ style={{ backgroundColor:"rgb(244, 120, 25)",padding:"0.5%" }}>
                                         {/* //SEARCH -BAR // */}
 
 <div className="relative transition-all duration-400 ease-in-out
-               w-[clamp(8rem,20vw,20rem)]
-                focus:w-[clamp(10rem,30vw,24rem)]  md:focus:w-[clamp(12rem,35vw,26rem)">
-<input type="text" placeholder="Search" style={{ backgroundColor:"white" ,padding:"1rem", }}
+               w-[clamp(10rem,22vw,20rem)] focus-within:w-[clamp(13rem,24vw,25rem)]
+                ">
+<input type="text" placeholder="Search" style={{ backgroundColor:"white" ,padding:"1rem 2rem 1rem 1rem", }}
 className="rounded-full  text-black  w-full h-9 focus:outline-none" />
 <img src={SearchBtn} alt="Search"
 className="h-6 w-6 absolute right-3 top-1/2 transform -translate-y-1/2 
