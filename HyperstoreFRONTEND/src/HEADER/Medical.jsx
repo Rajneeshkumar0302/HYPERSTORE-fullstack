@@ -33,7 +33,7 @@ const Medical = () => {
           className="text-[clamp(0.85rem,4vw,9rem)] font-bold text-center"
           style={{ marginBottom: "3%" }}
         >
-          Women
+          Medical
         </h1>
   
         <div
