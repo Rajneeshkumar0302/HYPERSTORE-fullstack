@@ -14,7 +14,10 @@ const PORT =process.env.PORT || 3000;
 // ===== MIDDLEWARE =====
 app.use(
   cors({
-    origin: "*",
+    origin: [
+    "http://localhost:5173",
+    "https://hyperstore-fullstack.vercel.app"
+  ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,  }));
    
@@ -22,10 +25,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // ===== MongoDB Connection ====
-mongoose.connect(process.env.MONGO_URI,
- {useNewUrlParser: true,
-  useUnifiedTopology: true
-})
+mongoose.connect(process.env.MONGO_URI,)
 .then(() => console.log("MongoDB connected"))
 .catch(err => console.log("MongoDB connection error:", err));
 
