@@ -1,49 +1,73 @@
 import dotenv from "dotenv";
 dotenv.config();
 
-import express from 'express'    
+import express from "express";
 import mongoose from "mongoose";
-import cors from "cors"
-import Product from "./models/Productmodel.js";
+import cors from "cors";
+
+// ROUTES
 import authRoutes from "./Routes/authRoutes.js";
 import adminRoutes from "./Routes/adminRoutes.js";
 import productRoutes from "./Routes/ProductRoutes.js";
-// ===== CONFIG =====
+
 const app = express();
-const PORT =process.env.PORT || 3000;
-// ===== MIDDLEWARE =====
+const PORT = process.env.PORT || 3000;
+
+/* =========================
+   CORS CONFIG (CORRECT)
+========================= */
+
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://hyperstore-fullstack.vercel.app",
+  "https://hyperstore-fullstack-53dijcqqc-hyperstores-projects.vercel.app",
+];
+
 app.use(
   cors({
-    origin: [
-    "http://localhost:5173",
-    "https://hyperstore-fullstack.vercel.app"
-  ],
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,  }));
-   
+  })
+);
+
+// 🔥 PRE-FLIGHT FIX
+app.options("*", cors());
+
+/* =========================
+   MIDDLEWARE
+========================= */
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// ===== MongoDB Connection ====
-mongoose.connect(process.env.MONGO_URI,)
-.then(() => console.log("MongoDB connected"))
-.catch(err => console.log("MongoDB connection error:", err));
+/* =========================
+   DATABASE
+========================= */
 
-// ===== ROUTES =====
-//  routes once
-app.use("/api/auth",authRoutes);
-app.use("/api/admin",adminRoutes);
-app.use("/api/products",productRoutes);
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => console.log("✅ MongoDB connected"))
+  .catch((err) => console.error("❌ MongoDB error:", err));
 
-// app.post('/api/categories', async (req,res)=>{
-//   try {
-//     const savedItem = await Categories.create(req.body); // Save to MongoDB           
-//     res.json(savedItem);
-//   } catch(err) {
-//     res.status(500).json({ error: 'Server error' });
-//   }
-// });
+/* =========================
+   ROUTES
+========================= */
 
-app.listen(PORT,()=>{
-    console.log(`server is running on port ${PORT} `)     
-})
+app.use("/api/auth", authRoutes);
+app.use("/api/admin", adminRoutes);
+app.use("/api/products", productRoutes);
+
+/* =========================
+   SERVER
+========================= */
+
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on port ${PORT}`);
+});
