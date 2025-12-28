@@ -214,7 +214,7 @@ const Section1 = () => {
     backgroundColor: 'rgb(244, 240, 225)',
     padding: '0rem',
     borderRadius: '1rem', 
-    height:"clamp(380px,89vh,677px)",
+    height:"clamp(380px,99vh,677px)",
     overflow: "hidden", }}>
 
 
@@ -230,7 +230,7 @@ const Section1 = () => {
 
 
   <div style ={{ zIndex: 12,opacity: 0.99,
-   padding:'0% 2% 0% 2%' }}>
+   padding:'0% 2% 4% 2%' }}>
 
     <h2 className="text-[clamp(1.2rem,3vw,4rem)] 
          font-semibold text-center  top-5">
@@ -238,7 +238,7 @@ const Section1 = () => {
 
  
   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-18
-   text-center  h-[clamp(150px,30vh,310px)] " 
+   text-center  h-[clamp(130px,30vh,310px)] " 
                      style={{
                       padding:"0% 0% 10% 0%",                                         
                       opacity: 1, // 🔹 keep it subtle
@@ -288,7 +288,7 @@ const Section1 = () => {
       </p>
       <img src={bestdeals}  alt="delivery" style={{
                   borderRadius: '1rem',
-                  height:"clamp(150px,50vh,530px)",overflow:"hidden" ,
+                  height:"clamp(130px,45vh,530px)",overflow:"hidden" ,
                   width: '100%',
                                                          
                   }} />
