@@ -275,7 +275,7 @@ const Section1 = () => {
       <img src={Securepayments}  alt="delivery" 
          style={{
                   borderRadius: '1rem',
-                  height:"clamp(130px,540h,530px)"                                         
+                  height:"clamp(130px,45vh,530px)"                                         
                   }} /> </div>
 
     {/* Best Deals */}
