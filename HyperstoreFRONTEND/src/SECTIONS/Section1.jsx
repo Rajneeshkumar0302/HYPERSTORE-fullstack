@@ -206,100 +206,144 @@ const Section1 = () => {
         </section>
 
         {/* Features Section */}
-        <section
-    id="features"
-    style={{
+      <section
+  id="features"
+  style={{
     position: "relative",
-    margin: '8%',
-    backgroundColor: 'rgb(244, 240, 225)',
-    padding: '0rem',
-    borderRadius: '1rem', 
-    height:"clamp(390px,99vh,677px)",
-    overflow: "visible", }}>
+    margin: "8%",
+    backgroundColor: "rgb(244, 240, 225)",
+    borderRadius: "1rem",
+    height: "clamp(420px, 95vh, 720px)",
+    overflow: "hidden",
+  }}
+>
+  {/* Background Pattern */}
+  <img
+    src={bgpattern}
+    alt="background"
+    style={{
+      position: "absolute",
+      inset: 0,
+      width: "100%",
+      height: "100%",
+      objectFit: "cover",
+      borderRadius: "1rem",
+      zIndex: 0,
+      opacity: 0.25,
+    }}
+  />
 
+  {/* Content Wrapper */}
+  <div
+    style={{
+      position: "relative",
+      zIndex: 2,
+      padding: "2rem",
+    }}
+  >
+    {/* Heading */}
+    <h2 className="text-[clamp(1.4rem,3vw,3.5rem)] font-semibold text-center mb-8">
+      Features
+    </h2>
 
-     <img src={bgpattern}  style={{
-                      position: "absolute", // 🔹 make it a background layer                  
-                      width: 'max-width',
-                      
-                      objectFit: 'cover',
-                      borderRadius: '1rem',                                         
-                      opacity: 1, // 🔹 keep it subtle
-                      zIndex: 0,
-                      overflow: "hidden",  }} alt="images"/>
+    {/* SLIDER */}
+    <div
+      style={{
+        display: "flex",
+        gap: "2rem",
+        overflowX: "auto",
+        scrollSnapType: "x mandatory",
+        WebkitOverflowScrolling: "touch",
+        paddingBottom: "1.5rem",
+        scrollbarWidth: "none",
+        msOverflowStyle: "none",
+      }}
+    >
+      {/* FAST DELIVERY */}
+      <div
+        style={{
+          minWidth: "clamp(280px, 85vw, 420px)",
+          scrollSnapAlign: "center",
+          flexShrink: 0,
+        }}
+        className="flex flex-col items-center bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-shadow duration-300"
+      >
+        <i className="fa-solid fa-truck-fast text-3xl text-green-700 mb-3"></i>
+        <h3 className="text-lg font-semibold">Fast Delivery</h3>
+        <p className="text-gray-600 text-sm mt-2 text-center">
+          Get your orders delivered within 24 to 48 hours across major cities.
+        </p>
 
+        <img
+          src={fastdelivery}
+          alt="Fast Delivery"
+          style={{
+            width: "100%",
+            height: "clamp(140px, 30vh, 220px)",
+            objectFit: "cover",
+            borderRadius: "1rem",
+            marginTop: "1rem",
+          }}
+        />
+      </div>
 
-  <div style ={{ zIndex: 12,opacity: 0.99,
-   padding:'0% 2% 0% 2%' }}>
+      {/* SECURE PAYMENTS */}
+      <div
+        style={{
+          minWidth: "clamp(280px, 85vw, 420px)",
+          scrollSnapAlign: "center",
+          flexShrink: 0,
+        }}
+        className="flex flex-col items-center bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-shadow duration-300"
+      >
+        <i className="fa-solid fa-lock text-3xl text-green-700 mb-3"></i>
+        <h3 className="text-lg font-semibold">Secure Payments</h3>
+        <p className="text-gray-600 text-sm mt-2 text-center">
+          Your transactions are protected with end-to-end encryption.
+        </p>
 
-    <h2 className="text-[clamp(1.2rem,3vw,4rem)] 
-         font-semibold text-center  top-5">
-    Features  </h2>
+        <img
+          src={Securepayments}
+          alt="Secure Payments"
+          style={{
+            width: "100%",
+            height: "clamp(140px, 30vh, 220px)",
+            objectFit: "cover",
+            borderRadius: "1rem",
+            marginTop: "1rem",
+          }}
+        />
+      </div>
 
- 
-  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-18
-   text-center  h-[clamp(250px,40vh,310px)] " 
-                     style={{
-                      padding:"0% 0% 10% 0%",                                         
-                      opacity: 1, // 🔹 keep it subtle
-                       }}>
+      {/* BEST DEALS */}
+      <div
+        style={{
+          minWidth: "clamp(280px, 85vw, 420px)",
+          scrollSnapAlign: "center",
+          flexShrink: 0,
+        }}
+        className="flex flex-col items-center bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-shadow duration-300"
+      >
+        <i className="fa-solid fa-tags text-3xl text-green-700 mb-3"></i>
+        <h3 className="text-lg font-semibold">Best Deals</h3>
+        <p className="text-gray-600 text-sm mt-2 text-center">
+          Enjoy exclusive discounts and seasonal offers every week.
+        </p>
 
-
-
-    {/* Fast Delivery */}
-    <div className="flex flex-col items-center bg-white p-6 rounded-xl shadow-sm 
-    hover:shadow-lg transition-shadow duration-300 h-[clamp(150px,50vh,530px)] ">
-      <i className="fa-solid fa-truck-fast text-3xl text-green-700 mb-3"></i>
-      <h3 className="text-lg font-semibold">Fast Delivery</h3>
-      <p className="text-gray-600 text-l mt-2">
-        Get your orders delivered within 24 to 48 hours across major cities.
-      </p>
-      <img src={fastdelivery}  alt="delivery" 
-      style={{ borderRadius: '1rem',
-       height:"clamp(150px,50vh,530px)" ,
-       overflow:"hidden" ,
-       width:"100%" }} />
-    </div>
-
-
-
-    {/* Secure Payments */}
-    <div className="flex flex-col items-center bg-white p-6 rounded-xl shadow-sm
-     hover:shadow-lg transition-shadow duration-300 h-[clamp(150px,50vh,530px)] ">
-      <i className="fa-solid fa-lock text-3xl text-green-700 mb-3"></i>
-      <h3 className="text-lg font-semibold">Secure Payments</h3>
-      <p className="text-gray-600 text-sm mt-2">
-        Your transactions are protected with end-to-end encryption.
-      </p>
-      <img src={Securepayments}  alt="delivery" 
-         style={{
-                  borderRadius: '1rem',
-                  height:"clamp(150px,50vh,530px)"                                         
-                  }} />
-    </div>
-
-
-    {/* Best Deals */}
-    <div className="flex flex-col items-center bg-white p-6 rounded-xl shadow-sm 
-    hover:shadow-lg transition-shadow duration-300 h-[clamp(150px,50vh,530px)] ">
-      <i className="fa-solid fa-tags text-3xl text-green-700 mb-3"></i>
-      <h3 className="text-lg font-semibold">Best Deals</h3>
-      <p className="text-gray-600 text-sm mt-2">
-        Enjoy exclusive discounts and seasonal offers every week.
-      </p>
-      <img src={bestdeals}  alt="delivery" style={{
-                  borderRadius: '1rem',
-                  height:"clamp(150px,50vh,530px)",overflow:"hidden" ,
-                  width: '100%',
-                                                         
-                  }} />
+        <img
+          src={bestdeals}
+          alt="Best Deals"
+          style={{
+            width: "100%",
+            height: "clamp(140px, 30vh, 220px)",
+            objectFit: "cover",
+            borderRadius: "1rem",
+            marginTop: "1rem",
+          }}
+        />
+      </div>
     </div>
   </div>
-    
-  </div>                  
-
-  
-  
 </section>
 
 
