@@ -214,7 +214,7 @@ const Section1 = () => {
     backgroundColor: 'rgb(244, 240, 225)',
     padding: '0rem',
     borderRadius: '1rem', 
-    height:"clamp(240px,79vh,677px)",
+    height:"clamp(280px,89vh,677px)",
     overflow: "hidden", }}>
 
 
