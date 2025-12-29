@@ -1,3 +1,5 @@
+console.log("✅ ProductRoutes loaded");
+
 import express from "express";
 import {
   addProduct,
