@@ -28,7 +28,6 @@ app.use(
       if (!origin) {
         return callback(null, true);
       }
-
       // allow ALL Vercel deployments (prod + preview)
       if (
         origin.endsWith(".vercel.app") ||
@@ -43,9 +42,6 @@ app.use(
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
-
-// 🔥 Preflight fix (IMPORTANT)
-app.options("*", cors());
 
 /* =========================
    MIDDLEWARE
