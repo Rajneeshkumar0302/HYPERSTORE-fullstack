@@ -17,31 +17,12 @@ const PORT = process.env.PORT || 3000;
    CORS CONFIG (FINAL & SAFE)
 ========================= */
 
-const allowedOrigins = [
-  "http://localhost:5173", // local frontend
-];
-
 app.use(
   cors({
-    origin: (origin, callback) => {
-      // allow server-to-server, Postman, etc.
-      if (!origin) {
-        return callback(null, true);
-      }
-      // allow ALL Vercel deployments (prod + preview)
-      if (
-        origin.endsWith(".vercel.app") ||
-        allowedOrigins.includes(origin)
-      ) {
-        return callback(null, true);
-      }
-
-      return callback(new Error("Not allowed by CORS"));
-    },
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    origin: "*",
   })
 );
+
 
 /* =========================
    MIDDLEWARE
