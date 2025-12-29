@@ -11,7 +11,7 @@ const Men = () => {
   useEffect(() => {
     const fetchMenProducts = async () => {
       try {
-        const res = await API.get("/api/products/category/men");
+        const res = await API.get("/products/category/men");
         setProducts(res.data.products);
       } catch (err) {
         if (import.meta.env.DEV) {
