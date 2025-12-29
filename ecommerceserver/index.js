@@ -47,6 +47,7 @@ mongoose
 app.use("/api/auth", authRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/products", productRoutes);
+console.log("✅ Product routes mounted at /api/products");
 
 /* =========================
    SERVER
