@@ -67,7 +67,6 @@ const Categories = () => {
     backgroundImage: `url(${bgpattern})`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
-    backgroundPosition: "center",
   }}>
     <h1 className="text-[clamp(1rem,2.2vw,2.9rem)] font-bold flex justify-center mb-4">Categories</h1>
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 
