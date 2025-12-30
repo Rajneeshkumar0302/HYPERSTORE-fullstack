@@ -109,6 +109,7 @@ const AdminControl = () => {
     <div
       style={{
         backgroundImage: `url(${bgpattern})`,
+        minWidth :"100vw"
         minHeight: "100vh",
         padding: "2rem",
       }}
@@ -130,8 +131,15 @@ const AdminControl = () => {
         </button>
         
       </div>
+<div
+  style={{
+    maxWidth: "1100px",
+    margin: "2rem auto",
+    padding: "2rem",
+  }}>
+  {renderSection()}
+</div>
 
-      {renderSection()}
     </div>
   );
 };
