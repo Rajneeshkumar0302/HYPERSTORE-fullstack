@@ -35,14 +35,7 @@ app.use(
 );
 
 // Preflight
-// app.options("*", cors());
-
-
-// app.use(
-//   cors({
-//     origin: "*",
-//   })
-// );
+app.options("*", cors());
 
 
 /* =========================
