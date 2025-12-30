@@ -4,7 +4,6 @@ dotenv.config();
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
-
 // ROUTES
 import authRoutes from "./Routes/authRoutes.js";
 import adminRoutes from "./Routes/adminRoutes.js";
@@ -16,12 +15,34 @@ const PORT = process.env.PORT || 3000;
 /* =========================
    CORS CONFIG (FINAL & SAFE)
 ========================= */
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://hyperstore-fullstack.vercel.app",
+];
 
 app.use(
   cors({
-    origin: "*",
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+      return callback(new Error("CORS not allowed"));
+    },
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   })
 );
+
+// Preflight
+// app.options("*", cors());
+
+
+// app.use(
+//   cors({
+//     origin: "*",
+//   })
+// );
 
 
 /* =========================
