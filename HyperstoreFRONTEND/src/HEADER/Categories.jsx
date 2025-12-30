@@ -61,7 +61,7 @@ const Categories = () => {
     
   ];
   return (
-    <div className="p-6"  style={{
+    <div className="w-full p-6"  style={{
     backgroundImage: `url(${bgpattern})`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
