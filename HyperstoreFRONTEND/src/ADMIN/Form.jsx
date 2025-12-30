@@ -61,12 +61,12 @@ const Form = ({ onSave, editingProduct, setEditingProduct }) => {
   return (
     <div
       className="max-h-screen flex flex-col items-center  bg-amber-600 gap-4"
-      style={{ margin: "0% 4%", padding: "3%", borderRadius: "50%" }}>
+      style={{ margin: "0% 2%", padding: "3%", borderRadius: "50%" }}>
       <form
         onSubmit={handleSubmit}
         className="bg-[rgb(244,240,225)] flex flex-col items-center justify-between p-8
                    rounded-2xl shadow-2xl
-                   w-[41%] sm:w-[38%] md:w-[34%] lg:w-[30%]
+                   w-[49%] sm:w-[48%] md:w-[40%] lg:w-[30%]
                    transition-all duration-300 ease-in-out
                    transform hover:scale-105 hover:shadow-[0_10px_25px_rgba(0,0,0,0.25)]
                    overflow-hidden ">
