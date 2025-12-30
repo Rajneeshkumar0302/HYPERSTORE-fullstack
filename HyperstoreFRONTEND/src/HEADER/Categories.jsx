@@ -68,7 +68,7 @@ const Categories = () => {
   }}>
     <h1 className="text-[clamp(1rem,2.2vw,2.9rem)] font-bold flex justify-center mb-4">Categories</h1>
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 
-    lg:grid-cols-4 gap-9" style={{ margin:"4rem 2rem 1rem 2rem",  }}>
+    lg:grid-cols-4 gap-9" style={{ margin:"4rem 0rem 1rem 2rem",  }}>
     {categories.map((category) => (
     <Card key={category.id} title={category.title} content={category.content}
     image={category.image} link={category.link} />
